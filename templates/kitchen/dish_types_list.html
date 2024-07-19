@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}List of Dish Types{% endblock %}
+
+{% block content %}
+    <h1>List of the Types of Dishes</h1>
+    <ul>
+        {% for dish_type in dish_types_list %}
+        <li>{{ dish_type.name }} 
+            <a href="{% url 'kitchen:dish-type-update' dish_type.id %}" class="button">Update</a> 
+            <a href="{% url 'kitchen:dish-type-delete' dish_type.id %}" class="button button-secondary">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'kitchen:dish-type-create' %}" class="button">Add a new dish type</a>
+    {% include 'includes/pagination.html' with page_obj=dish_types_list %}
+{% endblock %}
