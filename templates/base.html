@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Culinary project{% endblock %}</title>
+  <title>{% block title %}Culinary Project{% endblock %}</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
@@ -11,29 +12,31 @@
   <header>
     <div class="header-container">
       <h1>Culinary Project</h1>
-      <nav class="header-nav">
-        <a href="{% url 'kitchen:index' %}">Home</a>
-        <a href="#">Recipes</a>
-        <a href="#">Ingredients</a>
-        <a href="#">About us</a>
+      <nav>
+        <ul class="header-nav">
+          <li><a href="{% url 'kitchen:index' %}">Home</a></li>
+          <li><a href="{% url 'kitchen:dish-type-list' %}">Dish Type</a></li>
+          <li><a href="#">Dish</a></li>
+          <li><a href="#">Cook</a></li>
+        </ul>
+        <div class="auth-buttons">
+          {% if user.is_authenticated %}
+            <a href="{% url 'kitchen:logout' %}" class="btn">Logout</a>
+            <span>Welcome, {{ user.username }}!</span>
+          {% else %}
+            <a href="{% url 'kitchen:login' %}" class="btn">Login</a>
+          {% endif %}
+        </div>
       </nav>
-      <div class="auth-buttons">
-        {% if user.is_authenticated %}
-          <a href="{% url 'logout' %}" class="btn">Logout</a>
-          <span>Welcome, {{ user.username }}!</span>
-        {% else %}
-          <a href="{% url 'login' %}" class="btn">Login</a>
-        {% endif %}
-      </div>
     </div>
   </header>
+  
   <main class="main-container">
-    <aside class="sidebar">
-      {% include "includes/sidebar.html" %}
-    </aside>
-    <section class="content">
-      {% block content %}{% endblock %}
-    </section>
+    {% include "includes/sidebar.html" %}
+    <div class="content">
+      {% block content %}
+      {% endblock %}
+    </div>
   </main>
 </body>
 </html>

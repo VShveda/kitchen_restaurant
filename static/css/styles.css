@@ -24,9 +24,23 @@ header h1 {
   font-size: 24px;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header-nav {
   display: flex;
   gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-nav li {
+  display: inline;
+  align-items: center;
 }
 
 .header-nav a {
@@ -121,4 +135,56 @@ p {
 
 .sidebar ul li a:hover {
   color: #1abc9c;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.button-secondary {
+  background-color: #f44336;
+}
+
+.button-secondary:hover {
+  background-color: #da190b;
+}
+
+.button-secondary:active {
+  background-color: #da190b;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+.step-links a {
+  color: #1abc9c;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.step-links a:hover {
+  text-decoration: underline;
+}
+
+.step-links .current {
+  margin: 0 5px;
 }
