@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.core.exceptions import ValidationError
 
 from kitchen.models import Cook, Dish
 
@@ -22,3 +23,22 @@ class CookCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
             "years_of_experience",
         )
+
+
+class CookExperienceUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ["years_of_experience"]
+
+    def clean_experience_value(self):
+        return validate_experience_value(self.changed_data["years_of_experience"])
+
+
+def validate_experience_value(years_of_experience):
+    if years_of_experience < 0:
+        raise ValidationError("years of experience cannot be less than zero")
+    elif not years_of_experience.isdigit():
+        raise  ValidationError("years of experience should be digits")
+    elif years_of_experience > 70:
+        raise ValidationError("You must have miscounted")
+    return years_of_experience
