@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from kitchen.models import (
@@ -31,6 +32,12 @@ class DishTypeListView(generic.ListView):
     context_object_name = "dish_types_list"
     template_name = "kitchen/dish_types_list.html"
     paginate_by = 3
+
+
+class DishTypeCreateView(LoginRequiredMixin, generic.edit.CreateView):
+    model = DishType
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:dish_type_list")
 
 
 
