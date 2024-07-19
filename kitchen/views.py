@@ -32,3 +32,5 @@ class DishTypeListView(generic.ListView):
     template_name = "kitchen/dish_types_list.html"
     paginate_by = 3
 
+
+
