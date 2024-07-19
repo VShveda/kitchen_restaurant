@@ -77,3 +77,8 @@ class DishDeleteView(LoginRequiredMixin, generic.edit.DeleteView):
     model = Dish
     success_url = reverse_lazy("kitchen:dish_list")
 
+
+class CookListView(generic.ListView):
+    model = Cook
+    paginate_by = 3
+
