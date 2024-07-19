@@ -2,29 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Culinary project{% endblock %}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Culinary project{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Culinary project</h1>
-    </header>
-    <nav>
-        <a href="{% url "kitchen:index" %}">Home</a>
-        <a href="#">Recipes</a>
-        <a href="#">Ingredients</a>
-        <a href="#">About us</a>
-    </nav>
-    <div class="container">
-        <aside class="sidebar">
-            {% include "includes/sidebar.html" %}
-        </aside>
-        <main class="content">
-            {% block content %}{% endblock %}
-        </main>
-    </div>
+  <header>
+    <h1>Culinary project</h1>
+  </header>
+  <nav>
+    <a href="{% url 'kitchen:index' %}">Home</a>
+    <a href="#">Recipes</a>
+    <a href="#">Ingredients</a>
+    <a href="#">About us</a>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      {% include 'includes/sidebar.html' %}
+    </aside>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
 </body>
 </html>
