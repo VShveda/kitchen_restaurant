@@ -55,4 +55,6 @@ class DishDetailView(generic.DetailView):
     model = Dish
 
 
-
+class DishListView(generic.ListView):
+    model = Dish
+    paginate_by = 3
