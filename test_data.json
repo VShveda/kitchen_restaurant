@@ -1,0 +1,222 @@
+[
+    {
+        "model": "kitchen.dishtype",
+        "pk": 1,
+        "fields": {
+            "name": "Appetizer"
+        }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 2,
+        "fields": {
+            "name": "Main Course"
+        }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 3,
+        "fields": {
+            "name": "Dessert"
+        }
+    },
+    {
+        "model": "kitchen.cook",
+        "pk": 1,
+        "fields": {
+            "username": "chef1",
+            "password": "pbkdf2_sha256$260000$...",
+            "email": "chef1@example.com",
+            "first_name": "John",
+            "last_name": "Doe",
+            "years_of_experience": 5
+        }
+    },
+    {
+        "model": "kitchen.cook",
+        "pk": 2,
+        "fields": {
+            "username": "chef2",
+            "password": "pbkdf2_sha256$260000$...",
+            "email": "chef2@example.com",
+            "first_name": "Jane",
+            "last_name": "Smith",
+            "years_of_experience": 3
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 1,
+        "fields": {
+            "name": "Bruschetta",
+            "description": "Grilled bread with tomatoes, garlic, and basil.",
+            "price": "7.50",
+            "dish_type": 1,
+            "cooks": [1, 2]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 2,
+        "fields": {
+            "name": "Chicken Parmesan",
+            "description": "Breaded chicken with marinara sauce and cheese.",
+            "price": "15.00",
+            "dish_type": 2,
+            "cooks": [1]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 3,
+        "fields": {
+            "name": "Tiramisu",
+            "description": "Coffee-flavored Italian dessert.",
+            "price": "8.00",
+            "dish_type": 3,
+            "cooks": [2]
+        }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 4,
+        "fields": {
+            "name": "Soup"
+        }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 5,
+        "fields": {
+            "name": "Salad"
+        }
+    },
+    {
+        "model": "kitchen.cook",
+        "pk": 3,
+        "fields": {
+            "username": "chef3",
+            "password": "pbkdf2_sha256$260000$...",
+            "email": "chef3@example.com",
+            "first_name": "Alice",
+            "last_name": "Brown",
+            "years_of_experience": 8
+        }
+    },
+    {
+        "model": "kitchen.cook",
+        "pk": 4,
+        "fields": {
+            "username": "chef4",
+            "password": "pbkdf2_sha256$260000$...",
+            "email": "chef4@example.com",
+            "first_name": "Bob",
+            "last_name": "White",
+            "years_of_experience": 10
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 4,
+        "fields": {
+            "name": "Minestrone",
+            "description": "Traditional Italian soup with vegetables, beans, and pasta.",
+            "price": "6.50",
+            "dish_type": 4,
+            "cooks": [3, 4]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 5,
+        "fields": {
+            "name": "Caesar Salad",
+            "description": "Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
+            "price": "9.00",
+            "dish_type": 5,
+            "cooks": [3]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 6,
+        "fields": {
+            "name": "Beef Stroganoff",
+            "description": "Sautéed pieces of beef served in a sauce with sour cream.",
+            "price": "18.00",
+            "dish_type": 2,
+            "cooks": [4]
+        }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 6,
+        "fields": {
+            "name": "Beverage"
+        }
+    },
+    {
+        "model": "kitchen.dishtype",
+        "pk": 7,
+        "fields": {
+            "name": "Snack"
+        }
+    },
+    {
+        "model": "kitchen.cook",
+        "pk": 5,
+        "fields": {
+            "username": "chef5",
+            "password": "pbkdf2_sha256$260000$...",
+            "email": "chef5@example.com",
+            "first_name": "Charlie",
+            "last_name": "Green",
+            "years_of_experience": 7
+        }
+    },
+    {
+        "model": "kitchen.cook",
+        "pk": 6,
+        "fields": {
+            "username": "chef6",
+            "password": "pbkdf2_sha256$260000$...",
+            "email": "chef6@example.com",
+            "first_name": "Diana",
+            "last_name": "Black",
+            "years_of_experience": 4
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 7,
+        "fields": {
+            "name": "Lemonade",
+            "description": "Refreshing drink made with lemons, water, and sugar.",
+            "price": "3.50",
+            "dish_type": 6,
+            "cooks": [5]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 8,
+        "fields": {
+            "name": "Spring Rolls",
+            "description": "Crispy rolls filled with vegetables and meat.",
+            "price": "5.00",
+            "dish_type": 7,
+            "cooks": [6]
+        }
+    },
+    {
+        "model": "kitchen.dish",
+        "pk": 9,
+        "fields": {
+            "name": "Spaghetti Carbonara",
+            "description": "Pasta with eggs, cheese, pancetta, and pepper.",
+            "price": "12.00",
+            "dish_type": 2,
+            "cooks": [5, 6]
+        }
+    }
+]
