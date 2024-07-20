@@ -13,12 +13,7 @@
     <div class="header-container">
       <h1>Culinary Project</h1>
       <nav>
-        <ul class="header-nav">
-          <li><a href="{% url 'kitchen:index' %}">Home</a></li>
-          <li><a href="{% url 'kitchen:dish-type-list' %}">Dish Type</a></li>
-          <li><a href="{% url 'kitchen:dish-list' %}">Dish</a></li>
-          <li><a href="#">Cook</a></li>
-        </ul>
+        {% include "includes/sidebar.html" %}
         <div class="auth-buttons">
           {% if user.is_authenticated %}
             <a href="{% url 'kitchen:logout' %}" class="btn">Logout</a>
@@ -32,7 +27,6 @@
   </header>
   
   <main class="main-container">
-    {% include "includes/sidebar.html" %}
     <div class="content">
       {% block content %}
       {% endblock %}
