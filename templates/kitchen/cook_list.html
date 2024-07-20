@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Cook List{% endblock %}
+
+{% block content %}
+  <h2>Cook List</h2>
+  {% if cook_list %}
+    <ul>
+      {% for cook in cook_list %}
+        <li>
+          <a href="{% url 'kitchen:cook-detail' cook.pk %}">{{ cook.username }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% include "includes/pagination.html" with page_obj=page_obj %}
+  {% else %}
+    <p>No cooks available.</p>
+  {% endif %}
+  <a href="{% url 'kitchen:cook-create' %}" class="btn">Create New Cook</a>
+{% endblock %}
