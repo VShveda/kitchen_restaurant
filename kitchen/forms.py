@@ -38,7 +38,7 @@ def validate_experience_value(years_of_experience):
     if years_of_experience < 0:
         raise ValidationError("years of experience cannot be less than zero")
     elif not years_of_experience.isdigit():
-        raise  ValidationError("years of experience should be digits")
+        raise ValidationError("years of experience should be digits")
     elif years_of_experience > 70:
         raise ValidationError("You must have miscounted")
     return years_of_experience
