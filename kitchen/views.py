@@ -107,3 +107,8 @@ def cook_assign_to_dish(request, pk):
     else:
         cook.dishes.add(pk)
     return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))
+
+
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Cook
+    success_url = reverse_lazy("kitchen:cook-list")
