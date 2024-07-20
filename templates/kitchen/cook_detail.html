@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Cook Detail{% endblock %}
+
+{% block content %}
+  <h2>{{ cook.username }}</h2>
+  <p>Email: {{ cook.email }}</p>
+  <p>Years of Experience: {{ cook.years_of_experience }}</p>
+  <h3>Dishes</h3>
+  <ul>
+    {% for dish in cook.dishes.all %}
+      <li>{{ dish.name }} ({{ dish.dish_type.name }})</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'kitchen:cook-update' pk=cook.id %}">Edit</a>
+  <a href="{% url 'kitchen:cook-delete' pk=cook.id %}">Delete</a>
+{% endblock %}
