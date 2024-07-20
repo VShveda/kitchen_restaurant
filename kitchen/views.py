@@ -83,10 +83,15 @@ class CookListView(generic.ListView):
     model = Cook
     paginate_by = 3
 
+    def get_queryset(self):
+        return Cook.objects.all().order_by("username")
+
 
 class CookDetailView(generic.DetailView):
     model = Cook
-    queryset = Cook.objects.all().prefetch_related("dish__dish_type")
+
+    def get_queryset(self):
+        return Cook.objects.prefetch_related("dishes__dish_type")
 
 
 class CookCreateView(LoginRequiredMixin, generic.edit.CreateView):
@@ -100,6 +105,11 @@ class CookExperienceUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("kitchen:cook-list")
 
 
+class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Cook
+    success_url = reverse_lazy("kitchen:cook-list")
+
+
 def cook_assign_to_dish(request, pk):
     cook = Cook.objects.get(id=request.user.id)
     if Dish.objects.get(id=request.user.id):
@@ -107,8 +117,3 @@ def cook_assign_to_dish(request, pk):
     else:
         cook.dishes.add(pk)
     return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))
-
-
-class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Cook
-    success_url = reverse_lazy("kitchen:cook-list")
