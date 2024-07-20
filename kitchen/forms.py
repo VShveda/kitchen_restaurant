@@ -22,7 +22,12 @@ class CookCreationForm(UserCreationForm):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
             "years_of_experience",
+            "first_name",
+            "last_name",
         )
+
+        def clean_experience_value(self):
+            return validate_experience_value(self.cleaned_data["years_of_experience"])
 
 
 class CookExperienceUpdateForm(forms.ModelForm):
@@ -42,3 +47,12 @@ def validate_experience_value(years_of_experience):
     elif years_of_experience > 70:
         raise ValidationError("You must have miscounted")
     return years_of_experience
+
+
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name"}),
+    )
