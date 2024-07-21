@@ -103,3 +103,15 @@ class CookSearchFormTests(TestCase):
         form_data = {"username": ""}
         form = CookSearchForm(data=form_data)
         self.assertTrue(form.is_valid())
+
+
+class DishTypeSearchFormTests(TestCase):
+    def test_dish_type_search_form_valid(self):
+        form_data = {"name": "Main Course"}
+        form = DishTypeSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_dish_type_search_form_empty(self):
+        form_data = {"name": ""}
+        form = DishTypeSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
