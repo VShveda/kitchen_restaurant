@@ -50,3 +50,15 @@ class DishTypeUpdateViewTests(LoginUserTestCase):
         self.assertRedirects(response, reverse("kitchen:dish-type-list"))
         self.dish_type.refresh_from_db()
         self.assertEqual(self.dish_type.name, "Updated DishType")
+
+
+class DishTypeDeleteViewTests(LoginUserTestCase):
+    def setUp(self):
+        super().setUp()
+        self.dish_type = DishType.objects.create(name='Test DishType')
+
+    def test_dish_type_delete_view(self):
+        response = self.client.post(reverse("kitchen:dish-type-delete", args=[self.dish_type.id]))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("kitchen:dish-type-list"))
+        self.assertFalse(DishType.objects.filter(name="Test DishType").exists())
