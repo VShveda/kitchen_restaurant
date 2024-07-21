@@ -1,9 +1,14 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block title %}Dish List{% endblock %}
 
 {% block content %}
   <h2>Dish List</h2>
+  <form method="get" action="" class="form-inline">
+    {{ search_form|crispy }}
+    <input type="submit" class="btn btn-secondary" value="🔍">
+  </form>
   {% if dish_list %}
     <ul>
       {% for dish in dish_list %}

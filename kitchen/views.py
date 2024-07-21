@@ -43,8 +43,8 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(DishTypeListView, self).get_context_data(**kwargs)
-        username = self.request.GET.get("username", "")
-        context["search_form"] = CookSearchForm(initial={"username": username})
+        name = self.request.GET.get("name", "")
+        context["search_form"] = CookSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self):
@@ -81,6 +81,21 @@ class DishDetailView(generic.DetailView):
 class DishListView(generic.ListView):
     model = Dish
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = CookSearchForm(initial={"username": username})
+        return context
+
+    def get_queryset(self):
+        queryset = Dish.objects.all()
+        form = CookSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["username"]
+            )
+        return queryset
 
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
