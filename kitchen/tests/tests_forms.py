@@ -39,3 +39,28 @@ class DishFormTests(TestCase):
         self.assertFalse(form.is_valid())
 
 
+class CookCreationFormTests(TestCase):
+    def test_cook_creation_form_valid(self):
+        form_data = {
+            "username": "newcook",
+            "password1": "strongpassword123",
+            "password2": "strongpassword123",
+            "years_of_experience": 5,
+            "first_name": "Test",
+            "last_name": "Cook",
+        }
+        form = CookCreationForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_cook_creation_form_invalid(self):
+        form_data = {
+            "username": "newcook",
+            "password1": "strongpassword123",
+            "password2": "differentpassword",
+            "years_of_experience": -5,
+            "first_name": "Test",
+            "last_name": "Cook",
+        }
+        form = CookCreationForm(data=form_data)
+        self.assertFalse(form.is_valid())
+
