@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
 
-{% block title %}Create/Update Dish Type{% endblock %}
+{% block title %}{{ object|yesno:"Update,Create" }} Dish Type{% endblock %}
 
 {% block content %}
     <h1>{% if object %}Update{% else %}Create{% endif %} Dish Type</h1>

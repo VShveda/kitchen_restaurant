@@ -137,9 +137,7 @@ class CookListView(generic.ListView):
 
 class CookDetailView(generic.DetailView):
     model = Cook
-
-    def get_queryset(self):
-        return Cook.objects.prefetch_related("dishes__dish_type")
+    queryset = Cook.objects.all().prefetch_related("dishes__dish_type")
 
 
 class CookCreateView(LoginRequiredMixin, generic.edit.CreateView):

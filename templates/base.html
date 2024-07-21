@@ -22,7 +22,7 @@
           {% if user.is_authenticated %}
             <form action="{% url 'logout' %}" method="POST">
               {% csrf_token %}
-              <button type="submit" class="btn btn-primary">Logout</button>
+              <button type="submit" class="btn btn-primary">logout</button>
             </form>
             <span>Welcome, {{ user.username }}!</span>
           {% else %}
