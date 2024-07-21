@@ -64,3 +64,19 @@ class CookCreationFormTests(TestCase):
         form = CookCreationForm(data=form_data)
         self.assertFalse(form.is_valid())
 
+
+class CookExperienceUpdateFormTests(TestCase):
+    def setUp(self):
+        self.cook = get_user_model().objects.create_user(username="testcook", password="password123",
+                                                         years_of_experience=5)
+
+    def test_cook_experience_update_form_valid(self):
+        form_data = {"years_of_experience": 10}
+        form = CookExperienceUpdateForm(data=form_data, instance=self.cook)
+        self.assertTrue(form.is_valid())
+
+    def test_cook_experience_update_form_invalid(self):
+        form_data = {"years_of_experience": -10}
+        form = CookExperienceUpdateForm(data=form_data, instance=self.cook)
+        self.assertFalse(form.is_valid())
+
