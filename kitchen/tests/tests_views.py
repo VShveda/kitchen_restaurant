@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from django.http import HttpResponseRedirect
+
 from kitchen.models import Dish, DishType, Cook
 
 
@@ -86,3 +88,20 @@ class CookExperienceUpdateViewTests(TestCase):
         self.assertRedirects(response, reverse("kitchen:cook-list"))
         self.user.refresh_from_db()
         self.assertEqual(self.user.years_of_experience, 10)
+
+
+class CookAssignToDishViewTests(LoginUserTestCase):
+    def setUp(self):
+        super().setUp()
+        self.dish = Dish.objects.create(
+            name="Test Dish",
+            dish_type=DishType.objects.create(
+                name="Test Type"),
+            price=5.00,
+            description="Test Description",
+        )
+
+    def test_cook_assign_to_dish(self):
+        response = self.client.get(reverse("kitchen:cook-assign-to-dish", args=[self.dish.id]))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("kitchen:dish-detail", args=[self.dish.id]))
