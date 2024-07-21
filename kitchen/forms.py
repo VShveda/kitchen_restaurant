@@ -30,23 +30,24 @@ class CookCreationForm(UserCreationForm):
             return validate_experience_value(self.cleaned_data["years_of_experience"])
 
 
+def validate_experience_value(years_of_experience):
+    if years_of_experience < 0:
+        raise ValidationError("years of experience cannot be less than zero")
+    elif not str(years_of_experience).isdigit():
+        raise ValidationError("years of experience should be digits")
+    elif years_of_experience > 70:
+        raise ValidationError("You must have miscounted")
+    return years_of_experience
+
+
 class CookExperienceUpdateForm(forms.ModelForm):
     class Meta:
         model = Cook
         fields = ["years_of_experience"]
 
-    def clean_experience_value(self):
-        return validate_experience_value(self.changed_data["years_of_experience"])
-
-
-def validate_experience_value(years_of_experience):
-    if years_of_experience < 0:
-        raise ValidationError("years of experience cannot be less than zero")
-    elif not years_of_experience.isdigit():
-        raise ValidationError("years of experience should be digits")
-    elif years_of_experience > 70:
-        raise ValidationError("You must have miscounted")
-    return years_of_experience
+    def clean_years_of_experience(self):
+        years_of_experience = self.cleaned_data.get("years_of_experience")
+        return validate_experience_value(years_of_experience)
 
 
 class DishSearchForm(forms.Form):
