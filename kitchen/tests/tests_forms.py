@@ -80,3 +80,15 @@ class CookExperienceUpdateFormTests(TestCase):
         form = CookExperienceUpdateForm(data=form_data, instance=self.cook)
         self.assertFalse(form.is_valid())
 
+
+class DishSearchFormTests(TestCase):
+    def test_dish_search_form_valid(self):
+        form_data = {"name": "Test Dish"}
+        form = DishSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_dish_search_form_empty(self):
+        form_data = {"name": ""}
+        form = DishSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
