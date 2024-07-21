@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 
 {% block title %}List of Dish Types{% endblock %}
 
 {% block content %}
     <h1>List of the Types of Dishes</h1>
+      <form method="get" action="" class="form-inline">
+        {{ search_form|crispy }}
+        <input type="submit" class="btn btn-secondary" value="🔍">
+      </form>
     <ul>
         {% for dish_type in dish_types_list %}
         <li>{{ dish_type.name }} 

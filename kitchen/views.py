@@ -5,7 +5,12 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import DishForm, CookCreationForm, CookExperienceUpdateForm, CookSearchForm
+from kitchen.forms import (
+    DishForm,
+    CookCreationForm,
+    CookExperienceUpdateForm,
+    CookSearchForm
+)
 from kitchen.models import (
     Cook,
     Dish,
@@ -13,6 +18,7 @@ from kitchen.models import (
 )
 
 
+@login_required
 def index(request):
     dish_count = Dish.objects.count()
     dish_types_count = DishType.objects.count()
@@ -29,11 +35,26 @@ def index(request):
     )
 
 
-class DishTypeListView(generic.ListView):
+class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     context_object_name = "dish_types_list"
     template_name = "kitchen/dish_types_list.html"
-    paginate_by = 3
+    paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DishTypeListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = CookSearchForm(initial={"username": username})
+        return context
+
+    def get_queryset(self):
+        queryset = DishType.objects.all()
+        form = CookSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["username"]
+            )
+        return queryset
 
 
 class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
@@ -59,7 +80,7 @@ class DishDetailView(generic.DetailView):
 
 class DishListView(generic.ListView):
     model = Dish
-    paginate_by = 3
+    paginate_by = 5
 
 
 class DishCreateView(LoginRequiredMixin, generic.CreateView):
@@ -81,7 +102,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CookListView(generic.ListView):
     model = Cook
-    paginate_by = 3
+    paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CookListView, self).get_context_data(**kwargs)
