@@ -42,7 +42,10 @@ class DishTypeUpdateViewTests(LoginUserTestCase):
         self.dish_type = DishType.objects.create(name="Test DishType")
 
     def test_dish_type_update_view(self):
-        response = self.client.post(reverse("kitchen:dish-type-update", args=[self.dish_type.id]), {"name": "Updated DishType"})
+        response = self.client.post(reverse(
+            "kitchen:dish-type-update",
+            args=[self.dish_type.id]),
+            {"name": "Updated DishType"})
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("kitchen:dish-type-list"))
         self.dish_type.refresh_from_db()
