@@ -62,3 +62,27 @@ class DishTypeDeleteViewTests(LoginUserTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("kitchen:dish-type-list"))
         self.assertFalse(DishType.objects.filter(name="Test DishType").exists())
+
+
+class CookExperienceUpdateViewTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username="testuser",
+            password="password",
+            years_of_experience=5
+        )
+        self.client.login(
+            username="testuser",
+            password="password"
+        )
+
+    def test_cook_experience_update_view(self):
+        response = self.client.post(reverse(
+            "kitchen:cook-update",
+            args=[self.user.id]),
+            {"years_of_experience": 10}
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("kitchen:cook-list"))
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.years_of_experience, 10)
