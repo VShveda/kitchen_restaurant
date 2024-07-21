@@ -29,3 +29,24 @@ class CookModelTests(TestCase):
         self.assertEqual(self.user._meta.verbose_name_plural, "cooks")
 
 
+class DishModelTests(TestCase):
+    def setUp(self):
+        self.dishtype = DishType.objects.create(name="Dessert")
+        self.cook = get_user_model().objects.create_user(username="testcook", password="password123")
+        self.dish = Dish.objects.create(
+            name="Chocolate Cake",
+            description="Delicious chocolate cake",
+            price=15.99,
+            dish_type=self.dishtype
+        )
+        self.dish.cooks.add(self.cook)
+
+    def test_create_dish(self):
+        self.assertEqual(self.dish.name, "Chocolate Cake")
+        self.assertEqual(self.dish.description, "Delicious chocolate cake")
+        self.assertEqual(self.dish.price, 15.99)
+        self.assertEqual(self.dish.dish_type.name, "Dessert")
+        self.assertEqual(str(self.dish), "Chocolate Cake")
+        self.assertIn(self.cook, self.dish.cooks.all())
+        self.assertEqual(self.dish._meta.verbose_name, "dish")
+        self.assertEqual(self.dish._meta.verbose_name_plural, "dishes")
