@@ -7,7 +7,8 @@
   <p>Are you sure you want to delete "{{ dish.name }}"?</p>
   <form method="post">
     {% csrf_token %}
-    <button type="submit" class="btn">Confirm</button>
+    <button type="submit" class="button button-secondary">Confirm</button>
+    <a href="{% url 'kitchen:dish-detail' dish.pk %}" class="button">Cancel</a>
   </form>
-  <a href="{% url 'kitchen:dish-detail' dish.pk %}" class="btn">Cancel</a>
+  
 {% endblock %}

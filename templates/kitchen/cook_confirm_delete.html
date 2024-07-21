@@ -7,7 +7,7 @@
   <p>Are you sure you want to delete the cook "{{ cook.username }}"?</p>
   <form method="post">
     {% csrf_token %}
-    <button type="submit" class="btn">Confirm</button>
-    <a href="{% url 'kitchen:cook-detail' cook.pk %}" class="btn">Cancel</a>
+    <button type="submit" class="button button-secondary">Confirm</button>
+    <a href="{% url 'kitchen:cook-detail' cook.pk %}" class="button">Cancel</a>
   </form>
 {% endblock %}
