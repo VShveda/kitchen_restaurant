@@ -3,13 +3,31 @@
 {% block title %}Cook Detail{% endblock %}
 
 {% block content %}
-  <h2>{{ cook.username }}</h2>
-  <p>Email: {{ cook.email }}</p>
-  <p>Years of Experience: {{ cook.years_of_experience }}</p>
-  <h3>Dishes</h3>
-  <ul>
-    {% for dish in cook.dishes.all %}
-      <li>{{ dish.name }} ({{ dish.dish_type.name }})</li>
-    {% endfor %}
-  </ul>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h2 class="card-title">{{ cook.username }}</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Email:</strong> {{ cook.email }}</p>
+          <p><strong>Years of Experience:</strong> {{ cook.years_of_experience }}</p>
+          <h3>Dishes</h3>
+          {% if cook.dishes.all %}
+          <ul class="list-group">
+            {% for dish in cook.dishes.all %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ dish.name }} <span class="badge badge-secondary">{{ dish.dish_type.name }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+            <p>No dishes assigned.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
