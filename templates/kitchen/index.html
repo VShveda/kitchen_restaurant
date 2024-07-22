@@ -9,11 +9,17 @@
       <h2>Welcome to our culinary project!</h2>
       <p>Here you'll find recipes, ingredients, and other useful information for your cooking skills.</p>
       <p>Our chefs have many years of experience and are always happy to share their cooking secrets.</p>
-      <ul>
-        <li><strong>Dishes:</strong> {{ dish_count }}</li>
-        <li><strong>Dish types:</strong> {{ dish_types_count }}</li>
-        <li><strong>Cooks:</strong> {{ cooks_count }}</li>
-      </ul>
+      <div class="stats">
+        <div class="stat">
+          <strong>Dishes:</strong> <span>{{ dish_count }}</span>
+        </div>
+        <div class="stat">
+          <strong>Dish types:</strong> <span>{{ dish_types_count }}</span>
+        </div>
+        <div class="stat">
+          <strong>Cooks:</strong> <span>{{ cooks_count }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

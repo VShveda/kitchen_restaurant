@@ -82,11 +82,12 @@ nav {
 }
 
 .content {
-  width: 70%;
-  background-color: #fff;
-  padding: 20px;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80%;
+  text-align: center;
 }
 
 h2 {
@@ -98,6 +99,32 @@ h2 {
 p {
   line-height: 1.6;
   margin-bottom: 20px;
+  color: #34495e;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.stat {
+  background-color: #3e3587;
+  color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+}
+
+.stat strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat span {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .sidebar h2 {
@@ -136,6 +163,7 @@ p {
 .step-links .current {
   margin: 0 5px;
 }
+
 
 .table thead th {
   background-color: #2c3e50;
