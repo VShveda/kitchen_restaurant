@@ -24,7 +24,7 @@
             {% endfor %}
         </tbody>
     </table>
-    {% include 'includes/pagination.html' with page_obj=dish_types_list %}
+    {% include "includes/pagination.html" with page_obj=dish_types_list %}
     {% else %}
     <p>No dish types available.</p>
     {% endif %}
