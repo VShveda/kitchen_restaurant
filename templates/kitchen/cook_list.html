@@ -14,6 +14,8 @@
       {% for cook in cook_list %}
         <li>
           <a href="{% url 'kitchen:cook-detail' cook.pk %}">{{ cook.username }}</a>
+          <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="button">Update</a>
+          <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="button button-secondary">Delete</a>
         </li>
       {% endfor %}
     </ul>
