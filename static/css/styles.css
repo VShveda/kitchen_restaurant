@@ -62,20 +62,6 @@ nav {
   gap: 15px;
 }
 
-.auth-buttons .btn {
-  background-color: #1abc9c;
-  color: #fff;
-  padding: 8px 16px;
-  border-radius: 20px;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.auth-buttons .btn:hover {
-  background-color: #16a085;
-  color: #fff;
-}
-
 .auth-buttons span {
   margin-left: 10px;
 }
@@ -137,44 +123,6 @@ p {
   color: #1abc9c;
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #999;
-}
-
-.button:hover {
-  background-color: #3e8e41;
-}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
-.button-secondary {
-  background-color: #f44336;
-}
-
-.button-secondary:hover {
-  background-color: #da190b;
-}
-
-.button-secondary:active {
-  background-color: #da190b;
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}
-
 .step-links a {
   color: #1abc9c;
   text-decoration: none;
@@ -187,4 +135,48 @@ p {
 
 .step-links .current {
   margin: 0 5px;
+}
+
+.table thead th {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+.table tbody tr:hover {
+  background-color: #f4f4f9;
+}
+
+.table .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.table .btn-primary {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.table .btn-primary:hover {
+  background-color: #3e8e41;
+  border-color: #3e8e41;
+}
+
+.table .btn-danger {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.table .btn-danger:hover {
+  background-color: #da190b;
+  border-color: #da190b;
+}
+
+.table .btn-success {
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+}
+
+.table .btn-success:hover {
+  background-color: #16a085;
+  border-color: #16a085;
 }
