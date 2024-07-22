@@ -3,15 +3,31 @@
 {% block title %}List of Dish Types{% endblock %}
 
 {% block content %}
-    <h1>List of the Types of Dishes</h1>
-    <ul>
-        {% for dish_type in dish_types_list %}
-        <li>{{ dish_type.name }} 
-            <a href="{% url 'kitchen:dish-type-update' dish_type.id %}" class="button">Update</a> 
-            <a href="{% url 'kitchen:dish-type-delete' dish_type.id %}" class="button button-secondary">Delete</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'kitchen:dish-type-create' %}" class="button">Add a new dish type</a>
+<div class="container">
+    <h1 class="my-4">List of the Types of Dishes</h1>
+    {% if dish_types_list %}
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Dish Type</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dish_type in dish_types_list %}
+            <tr>
+                <td>{{ dish_type.name }}</td>
+                <td><a href="{% url 'kitchen:dish-type-update' dish_type.id %}" class="btn btn-primary">Update</a></td>
+                <td><a href="{% url 'kitchen:dish-type-delete' dish_type.id %}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% include 'includes/pagination.html' with page_obj=dish_types_list %}
+    {% else %}
+    <p>No dish types available.</p>
+    {% endif %}
+    <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-success my-3">Add a new dish type</a>
+</div>
 {% endblock %}
