@@ -24,10 +24,12 @@ class CookCreationForm(UserCreationForm):
             "years_of_experience",
             "first_name",
             "last_name",
+            "email",
         )
 
-        def clean_experience_value(self):
-            return validate_experience_value(self.cleaned_data["years_of_experience"])
+    def clean_years_of_experience(self):
+        years_of_experience = self.cleaned_data.get("years_of_experience")
+        return validate_experience_value(years_of_experience)
 
 
 def validate_experience_value(years_of_experience):
@@ -43,7 +45,13 @@ def validate_experience_value(years_of_experience):
 class CookExperienceUpdateForm(forms.ModelForm):
     class Meta:
         model = Cook
-        fields = ["years_of_experience"]
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "years_of_experience",
+        ]
 
     def clean_years_of_experience(self):
         years_of_experience = self.cleaned_data.get("years_of_experience")
