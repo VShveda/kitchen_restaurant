@@ -4,10 +4,10 @@
 {% block title %}{{ object|yesno:"Update,Create" }} Dish Type{% endblock %}
 
 {% block content %}
-    <h1>{% if object %}Update{% else %}Create{% endif %} Dish Type</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="button">{% if object %}Update{% else %}Create{% endif %}</button>
-    </form>
+  <h1>{% if object %}Update{% else %}Create{% endif %} Dish Type</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="button">{% if object %}Update{% else %}Create{% endif %}</button>
+  </form>
 {% endblock %}
