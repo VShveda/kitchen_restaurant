@@ -23,8 +23,8 @@
       {% for dish_type in dish_types_list %}
       <tr>
         <td>{{ dish_type.name }}</td>
-        <td><a href="{% url 'kitchen:dish-type-update' dish_type.id %}" class="btn btn-primary">Update</a></td>
-        <td><a href="{% url 'kitchen:dish-type-delete' dish_type.id %}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-primary">Update</a></td>
+        <td><a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger">Delete</a></td>
       </tr>
       {% endfor %}
     </tbody>
