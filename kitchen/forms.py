@@ -28,7 +28,7 @@ class CookCreationForm(UserCreationForm):
         )
 
     def clean_years_of_experience(self):
-        years_of_experience = self.cleaned_data.get("years_of_experience")
+        years_of_experience = self.cleaned_data.get_object_or_404("years_of_experience")
         return validate_experience_value(years_of_experience)
 
 
@@ -54,7 +54,7 @@ class CookExperienceUpdateForm(forms.ModelForm):
         ]
 
     def clean_years_of_experience(self):
-        years_of_experience = self.cleaned_data.get("years_of_experience")
+        years_of_experience = self.cleaned_data.get_object_or_404("years_of_experience")
         return validate_experience_value(years_of_experience)
 
 
