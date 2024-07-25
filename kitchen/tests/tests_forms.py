@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+
+from kitchen.models import DishType
 from kitchen.forms import (
     DishForm,
     CookCreationForm,
@@ -8,7 +10,6 @@ from kitchen.forms import (
     CookSearchForm,
     DishTypeSearchForm,
 )
-from kitchen.models import DishType
 
 
 class DishFormTests(TestCase):
