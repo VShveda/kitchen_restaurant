@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}{{ object|yesno:"Update,Create" }} Dish Type{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          <h2 class="card-title">{% if object %}Update{% else %}Create{% endif %} Dish Type</h2>
+        </div>
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary mt-3">{% if object %}Update{% else %}Create{% endif %}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

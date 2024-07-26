@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}Cook List{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h2 class="my-4">Cook List</h2>
+    <form method="get" action="" class="form-inline mb-3">
+      {{ search_form|crispy }}
+      <button type="submit" class="btn btn-secondary ml-2">🔍</button>
+    </form>
+    {% if cook_list %}
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Years of Experience</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cook in cook_list %}
+            <tr>
+              <td><a href="{% url 'kitchen:cook-detail' pk=cook.pk %}">{{ cook.username }}</a></td>
+              <td>{{ cook.first_name }}</td>
+              <td>{{ cook.last_name }}</td>
+              <td>{{ cook.years_of_experience }}</td>
+              <td><a href="{% url 'kitchen:cook-update' pk=cook.pk %}" class="btn btn-primary">Update</a></td>
+              <td><a href="{% url 'kitchen:cook-delete' pk=cook.pk %}" class="btn btn-danger">Delete</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include "includes/pagination.html" with page_obj=page_obj %}
+    {% else %}
+      <p>No cooks available.</p>
+    {% endif %}
+    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-success my-3">Create New Cook</a>
+  </div>
+{% endblock %}

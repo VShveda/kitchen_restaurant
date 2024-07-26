@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="container">
+  <div class="content">
+    <div class="main">
+      <h2>Welcome to our culinary project!</h2>
+      <p>Here you'll find recipes, ingredients, and other useful information for your cooking skills.</p>
+      <p>Our chefs have many years of experience and are always happy to share their cooking secrets.</p>
+      <div class="stats">
+        <div class="stat">
+          <strong>Dishes:</strong> <span>{{ dish_count }}</span>
+        </div>
+        <div class="stat">
+          <strong>Dish types:</strong> <span>{{ dish_types_count }}</span>
+        </div>
+        <div class="stat">
+          <strong>Cooks:</strong> <span>{{ cooks_count }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
